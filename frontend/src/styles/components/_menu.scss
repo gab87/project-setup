@@ -1,0 +1,29 @@
+.menu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.menu__item {
+  width: 25%;
+  float: left;
+  line-height: 60px;
+  text-transform: uppercase;
+}
+
+a {
+  .menu__item & {
+    display: block;
+    text-decoration: none;
+    color: white;
+    transform: scale(.7);
+    transition: transform .2s ease-in-out 0s;
+    font-size: 20px;
+
+    &.is-selected{
+      transform: scale(1);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+var CiffiSettings = {
+    autoprefixer: 'last 12 versions',
+    assetsPath: '../static',
+	assetsPathName: 'src',
+	bundle: 'webpack',
+	defaultBuildEnv: 'local',
+	defaultDevEnv: 'dev',
+	devStartUrl: 'http://setup-test.local/',
+	features: ['browsersync'],
+	projectName: 'setup-test',
+	publicPath: './static/',
+	scriptsOutputName: 'main.js',
+	serverConfig: 'server.config.js',
+	serverPublicPath: '../',
+	srcPathName: 'src',
+	staticFolders: ['fonts','images'],
+	stylesOutputName: 'main.css'
+};
+
+module.exports = CiffiSettings;
