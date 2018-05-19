@@ -6,7 +6,7 @@ class Menu {
 		this.linksArray.forEach((el) => {
 			el.onclick = () => {
 				this.selectMenuLink(el);
-				onClickEvent(el.getAttribute('data-show-section'));
+				onClickEvent(el.getAttribute('data-show-section'), el.getAttribute('data-transition'));
 			};
 		});
 	}

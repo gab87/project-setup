@@ -8,6 +8,7 @@ class Transition {
 				in: {
 					set: {
 						x: '-100%',
+						y: '0%',
 						ease: Power3.easeInOut
 					},
 					to: {
@@ -19,6 +20,72 @@ class Transition {
 				out: {
 					to: {
 						x: '100%',
+						ease: Power3.easeInOut,
+						autoAlpha: 0
+					}
+				}
+			},
+			rightToLeft: {
+				duration: .4,
+				in: {
+					set: {
+						x: '100%',
+						y: '0%',
+						ease: Power3.easeInOut
+					},
+					to: {
+						x: '0%',
+						ease: Power3.easeInOut,
+						autoAlpha: 1
+					}
+				},
+				out: {
+					to: {
+						x: '-100%',
+						ease: Power3.easeInOut,
+						autoAlpha: 0
+					}
+				}
+			},
+			bottomToTop: {
+				duration: .4,
+				in: {
+					set: {
+						x: '0%',
+						y: '-100%',
+						ease: Power3.easeInOut
+					},
+					to: {
+						y: '0%',
+						ease: Power3.easeInOut,
+						autoAlpha: 1
+					}
+				},
+				out: {
+					to: {
+						y: '100%',
+						ease: Power3.easeInOut,
+						autoAlpha: 0
+					}
+				}
+			},
+			topToBottom: {
+				duration: .4,
+				in: {
+					set: {
+						x: '0%',
+						y: '100%',
+						ease: Power3.easeInOut
+					},
+					to: {
+						y: '0%',
+						ease: Power3.easeInOut,
+						autoAlpha: 1
+					}
+				},
+				out: {
+					to: {
+						y: '-100%',
 						ease: Power3.easeInOut,
 						autoAlpha: 0
 					}

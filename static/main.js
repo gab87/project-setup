@@ -8720,8 +8720,8 @@ var Application = function () {
 		this.layout = new _Layout2.default();
 
 		new _Menu2.default({
-			onClickEvent: function onClickEvent(id) {
-				_this.layout.show(id);
+			onClickEvent: function onClickEvent(id, type) {
+				_this.layout.show(id, type);
 			}
 		});
 
@@ -8964,9 +8964,12 @@ var Layout = function () {
 		}
 	}, {
 		key: 'show',
-		value: function show(id) {
+		value: function show(id, type) {
+			console.log(id);
+			console.log(type);
+
 			this.view.activeView = id;
-			this.transition.animate('leftToRight', this.view.activeView, this.view.previousView, this.layout, id);
+			this.transition.animate(type, this.view.activeView, this.view.previousView, this.layout, id);
 			// this.layout[id](id);
 		}
 	}]);
@@ -9022,7 +9025,7 @@ var Menu = function () {
 		this.linksArray.forEach(function (el) {
 			el.onclick = function () {
 				_this.selectMenuLink(el);
-				onClickEvent(el.getAttribute('data-show-section'));
+				onClickEvent(el.getAttribute('data-show-section'), el.getAttribute('data-transition'));
 			};
 		});
 	}
@@ -9080,6 +9083,7 @@ var Transition = function () {
 				in: {
 					set: {
 						x: '-100%',
+						y: '0%',
 						ease: _gsap.Power3.easeInOut
 					},
 					to: {
@@ -9091,6 +9095,72 @@ var Transition = function () {
 				out: {
 					to: {
 						x: '100%',
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 0
+					}
+				}
+			},
+			rightToLeft: {
+				duration: .4,
+				in: {
+					set: {
+						x: '100%',
+						y: '0%',
+						ease: _gsap.Power3.easeInOut
+					},
+					to: {
+						x: '0%',
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 1
+					}
+				},
+				out: {
+					to: {
+						x: '-100%',
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 0
+					}
+				}
+			},
+			bottomToTop: {
+				duration: .4,
+				in: {
+					set: {
+						x: '0%',
+						y: '-100%',
+						ease: _gsap.Power3.easeInOut
+					},
+					to: {
+						y: '0%',
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 1
+					}
+				},
+				out: {
+					to: {
+						y: '100%',
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 0
+					}
+				}
+			},
+			topToBottom: {
+				duration: .4,
+				in: {
+					set: {
+						x: '0%',
+						y: '100%',
+						ease: _gsap.Power3.easeInOut
+					},
+					to: {
+						y: '0%',
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 1
+					}
+				},
+				out: {
+					to: {
+						y: '-100%',
 						ease: _gsap.Power3.easeInOut,
 						autoAlpha: 0
 					}

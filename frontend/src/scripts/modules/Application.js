@@ -6,8 +6,8 @@ class Application {
 		this.layout = new Layout();
 
 		new Menu({
-			onClickEvent: (id) => {
-				this.layout.show(id);
+			onClickEvent: (id, type) => {
+				this.layout.show(id, type);
 			}
 		});
 

@@ -53,9 +53,12 @@ class Layout {
 		this.view.activeView = id;
 	}
 
-	show(id) {
+	show(id, type) {
+		console.log(id);
+		console.log(type);
+
 		this.view.activeView = id;
-		this.transition.animate('leftToRight', this.view.activeView, this.view.previousView, this.layout, id);
+		this.transition.animate(type , this.view.activeView, this.view.previousView, this.layout, id);
 		// this.layout[id](id);
 	}
 }
