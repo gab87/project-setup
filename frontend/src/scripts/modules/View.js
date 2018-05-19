@@ -17,8 +17,6 @@ class View {
 		});
 
 		view.classList.add(this.visibleClass);
-
-		this.activeView = id;
 	}
 
 	set activeView(id) {

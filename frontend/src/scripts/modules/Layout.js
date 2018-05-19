@@ -1,7 +1,7 @@
 import Footer from './Footer';
 import View from './View';
 import Aside from './Aside';
-// import Transition from './Transition';
+import Transition from './Transition';
 
 class Layout {
 	constructor() {
@@ -44,17 +44,19 @@ class Layout {
 				this.aside.show();
 			}
 		};
+
+		this.transition = new Transition();
 	}
 
 	init(id) {
 		this.layout[id](id);
+		this.view.activeView = id;
 	}
 
 	show(id) {
-		// this.transition = new Transition(this.layout[id](id));
-		//
-		// this.transition.animate('leftToRight', this.view.activeView, this.view.previousView);
-		this.layout[id](id);
+		this.view.activeView = id;
+		this.transition.animate('leftToRight', this.view.activeView, this.view.previousView, this.layout, id);
+		// this.layout[id](id);
 	}
 }
 
