@@ -8965,11 +8965,15 @@ var Layout = function () {
 	}, {
 		key: 'show',
 		value: function show(id, type) {
+			var _this2 = this;
+
 			console.log(id);
 			console.log(type);
 
 			this.view.activeView = id;
-			this.transition.animate(type, this.view.activeView, this.view.previousView, this.layout, id);
+			this.transition.animate(type, this.view.activeView, this.view.previousView, function () {
+				_this2.layout[id](id);
+			});
 			// this.layout[id](id);
 		}
 	}]);
@@ -9084,19 +9088,18 @@ var Transition = function () {
 					set: {
 						x: '-100%',
 						y: '0%',
-						ease: _gsap.Power3.easeInOut
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						x: '0%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 1
+						ease: _gsap.Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						x: '100%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 0
+						ease: _gsap.Power3.easeInOut
 					}
 				}
 			},
@@ -9106,19 +9109,18 @@ var Transition = function () {
 					set: {
 						x: '100%',
 						y: '0%',
-						ease: _gsap.Power3.easeInOut
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						x: '0%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 1
+						ease: _gsap.Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						x: '-100%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 0
+						ease: _gsap.Power3.easeInOut
 					}
 				}
 			},
@@ -9128,19 +9130,18 @@ var Transition = function () {
 					set: {
 						x: '0%',
 						y: '-100%',
-						ease: _gsap.Power3.easeInOut
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						y: '0%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 1
+						ease: _gsap.Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						y: '100%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 0
+						ease: _gsap.Power3.easeInOut
 					}
 				}
 			},
@@ -9150,19 +9151,18 @@ var Transition = function () {
 					set: {
 						x: '0%',
 						y: '100%',
-						ease: _gsap.Power3.easeInOut
+						ease: _gsap.Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						y: '0%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 1
+						ease: _gsap.Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						y: '-100%',
-						ease: _gsap.Power3.easeInOut,
-						autoAlpha: 0
+						ease: _gsap.Power3.easeInOut
 					}
 				}
 			}
@@ -9171,10 +9171,8 @@ var Transition = function () {
 
 	(0, _createClass3.default)(Transition, [{
 		key: 'animate',
-		value: function animate(type, elIn, elOut, layout, id) {
-			var tl = new _gsap.TimelineMax({ onComplete: function onComplete() {
-					layout[id](id);
-				} });
+		value: function animate(type, elIn, elOut, onComplete) {
+			var tl = new _gsap.TimelineMax({ onComplete: onComplete });
 
 			tl.set(elIn, this.config[type].in.set).to(elOut, this.config[type].duration, this.config[type].out.to).to(elIn, this.config[type].duration, this.config[type].in.to, '-=' + this.config[type].duration);
 		}

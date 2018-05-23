@@ -9,19 +9,18 @@ class Transition {
 					set: {
 						x: '-100%',
 						y: '0%',
-						ease: Power3.easeInOut
+						ease: Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						x: '0%',
-						ease: Power3.easeInOut,
-						autoAlpha: 1
+						ease: Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						x: '100%',
-						ease: Power3.easeInOut,
-						autoAlpha: 0
+						ease: Power3.easeInOut
 					}
 				}
 			},
@@ -31,19 +30,18 @@ class Transition {
 					set: {
 						x: '100%',
 						y: '0%',
-						ease: Power3.easeInOut
+						ease: Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						x: '0%',
-						ease: Power3.easeInOut,
-						autoAlpha: 1
+						ease: Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						x: '-100%',
-						ease: Power3.easeInOut,
-						autoAlpha: 0
+						ease: Power3.easeInOut
 					}
 				}
 			},
@@ -53,19 +51,18 @@ class Transition {
 					set: {
 						x: '0%',
 						y: '-100%',
-						ease: Power3.easeInOut
+						ease: Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						y: '0%',
-						ease: Power3.easeInOut,
-						autoAlpha: 1
+						ease: Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						y: '100%',
-						ease: Power3.easeInOut,
-						autoAlpha: 0
+						ease: Power3.easeInOut
 					}
 				}
 			},
@@ -75,27 +72,26 @@ class Transition {
 					set: {
 						x: '0%',
 						y: '100%',
-						ease: Power3.easeInOut
+						ease: Power3.easeInOut,
+						autoAlpha: 1
 					},
 					to: {
 						y: '0%',
-						ease: Power3.easeInOut,
-						autoAlpha: 1
+						ease: Power3.easeInOut
 					}
 				},
 				out: {
 					to: {
 						y: '-100%',
-						ease: Power3.easeInOut,
-						autoAlpha: 0
+						ease: Power3.easeInOut
 					}
 				}
 			}
 		};
 	}
 
-	animate(type, elIn, elOut, layout, id) {
-		let tl = new TimelineMax({onComplete: () => { layout[id](id); }});
+	animate(type, elIn, elOut, onComplete) {
+		let tl = new TimelineMax({ onComplete });
 
 		tl.set(elIn, this.config[type].in.set)
 			.to(elOut, this.config[type].duration, this.config[type].out.to)
