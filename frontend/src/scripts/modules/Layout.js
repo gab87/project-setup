@@ -2,11 +2,14 @@ import Footer from './Footer';
 import View from './View';
 import Aside from './Aside';
 import Transition from './Transition';
+import enterAnimation from '../config/enter-animation';
+import * as dat from 'dat.gui';
 
 class Layout {
 	constructor() {
+		this.gui = new dat.GUI();
+
 		this.view = new View({
-			viewContainerClass: '.main',
 			viewClass: '.section',
 			visibleClass: 'is-visible'
 		});
@@ -45,7 +48,8 @@ class Layout {
 			}
 		};
 
-		this.transition = new Transition();
+		this.transition = new Transition(enterAnimation);
+		this.gui.add(enterAnimation, 'duration', 0.4, 3);
 	}
 
 	init(id) {

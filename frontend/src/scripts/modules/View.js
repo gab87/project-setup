@@ -1,9 +1,8 @@
 class View {
 
-	constructor(config) {
-		this.viewClass = config.viewClass;
-		this.visibleClass = config.visibleClass;
-		this.footerClass = config.footerClass;
+	constructor({viewClass = '.section', visibleClass = 'is-visible'}) {
+		this.viewClass = viewClass;
+		this.visibleClass = visibleClass;
 		this.currentView;
 		this.prevView;
 	}
